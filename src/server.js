@@ -4,6 +4,11 @@ import cors from 'cors';
 
 import { getAllContacts, getContactById } from './services/contacts.js';
 
+import {
+  notFoundMiddleware,
+  errorHandlerMiddleWare,
+} from './middlewares/index.js';
+
 import { env } from './utils/env.js';
 
 const PORT = Number(env('PORT', 3000));
@@ -31,7 +36,6 @@ export const setupServer = () => {
 
   app.get('/contacts', async (req, res) => {
     const contacts = await getAllContacts();
-    console.log(contacts);
 
     res.json({
       status: 200,
@@ -42,9 +46,7 @@ export const setupServer = () => {
 
   app.get('/contacts/:contactId', async (req, res) => {
     const { contactId } = req.params;
-    console.log(contactId + '-------');
     const contact = await getContactById(contactId);
-    console.log(req.params);
 
     if (!contact) {
       res.json({
@@ -61,18 +63,9 @@ export const setupServer = () => {
     });
   });
 
-  app.use('*', (req, res, next) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
+  app.use(notFoundMiddleware);
 
-  app.use((err, req, res, next) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
+  app.use(errorHandlerMiddleWare);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
