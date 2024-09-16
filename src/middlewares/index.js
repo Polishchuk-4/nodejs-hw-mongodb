@@ -1,2 +1,2 @@
-export { default as errorHandlerMiddleWare } from './errorHandlerMiddleWare.js';
-export { default as notFoundMiddleware } from './notFoundMiddleware.js';
+export { default as errorHandler } from './errorHandler.js';
+export { default as notFoundHandler } from './notFoundHandler.js';

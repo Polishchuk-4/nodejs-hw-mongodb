@@ -2,10 +2,7 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 
-import {
-  notFoundMiddleware,
-  errorHandlerMiddleWare,
-} from './middlewares/index.js';
+import { notFoundHandler, errorHandler } from './middlewares/index.js';
 
 import contactsRouter from './routers/contacts.js';
 
@@ -36,9 +33,9 @@ export const setupServer = () => {
 
   app.use(contactsRouter);
 
-  app.use(notFoundMiddleware);
+  app.use(notFoundHandler);
 
-  app.use(errorHandlerMiddleWare);
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
