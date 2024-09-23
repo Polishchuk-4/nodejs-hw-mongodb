@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import {
   createContact,
   deleteContact,
@@ -8,8 +7,15 @@ import {
 } from '../services/contacts.js';
 import createHttpError from 'http-errors';
 
+import { parsePaginationParams } from '../utils/parsePaginationParams.js';
+import { parseSortParams } from '../utils/parseSortParams.js';
+
 export const getContactsController = async (req, res) => {
-  const contacts = await getAllContacts();
+  const { page, perPage } = parsePaginationParams(req.query);
+
+  const { sortBy, SortOrder } = parseSortParams(req.query);
+
+  const contacts = await getAllContacts({ page, perPage, sortBy, SortOrder });
 
   res.json({
     status: 200,
@@ -20,13 +26,6 @@ export const getContactsController = async (req, res) => {
 
 export const getContactByIdController = async (req, res, next) => {
   const { contactId } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(contactId)) {
-    res.status(400).json({
-      status: 400,
-      message: 'Invalid contact ID format',
-    });
-  }
 
   const contact = await getContactById(contactId);
 
