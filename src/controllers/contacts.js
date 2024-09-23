@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import {
   createContact,
   deleteContact,
@@ -20,13 +19,6 @@ export const getContactsController = async (req, res) => {
 
 export const getContactByIdController = async (req, res, next) => {
   const { contactId } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(contactId)) {
-    res.status(400).json({
-      status: 400,
-      message: 'Invalid contact ID format',
-    });
-  }
 
   const contact = await getContactById(contactId);
 
