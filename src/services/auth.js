@@ -1,4 +1,4 @@
-import { UsersCollection } from '../db/models/User.js';
+import { UsersCollection } from '../db/models/user.js';
 
 import bcrypt from 'bcrypt';
 
@@ -26,3 +26,4 @@ export const loginUser = async (payload) => {
 
   if (!isEqual) throw createHttpError(401, 'Unauthorized');
 };
+// test
