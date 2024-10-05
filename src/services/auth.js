@@ -26,4 +26,3 @@ export const loginUser = async (payload) => {
 
   if (!isEqual) throw createHttpError(401, 'Unauthorized');
 };
-// test
