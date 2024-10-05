@@ -10,7 +10,7 @@ import {
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
-import { validateBody, isValidId } from '../middlewares/index.js';
+import { validateBody, isValidId, authenticate } from '../middlewares/index.js';
 
 import {
   createContactSchema,
@@ -18,6 +18,8 @@ import {
 } from '../validation/contacts.js';
 
 const router = Router();
+
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(getContactsController));
 
