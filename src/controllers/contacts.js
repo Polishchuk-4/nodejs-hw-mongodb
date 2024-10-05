@@ -63,7 +63,6 @@ export const createContactController = async (req, res) => {
 };
 
 export const upsertContactController = async (req, res, next) => {
-  // const { contactId } = req.params;
   const { userId } = req.user._id;
 
   const result = await updateContact(userId, req.body, { upsert: true });
