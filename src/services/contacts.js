@@ -38,8 +38,11 @@ export const getAllContacts = async ({
   return { data: contacts, ...paginationData };
 };
 
-export const getContactById = async (userId) => {
-  const contact = await ContactsCollection.find({ userId: userId });
+export const getContactById = async (userId, contactId) => {
+  const contact = await ContactsCollection.findOne({
+    userId: { $eq: userId },
+    _id: { $eq: contactId },
+  });
   return contact;
 };
 

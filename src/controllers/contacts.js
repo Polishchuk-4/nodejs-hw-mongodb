@@ -37,9 +37,10 @@ export const getContactsController = async (req, res) => {
 };
 
 export const getContactByIdController = async (req, res, next) => {
-  const { userId } = req.user._id;
+  const userId = req.user._id;
+  const { contactId } = req.params;
 
-  const contact = await getContactById(userId);
+  const contact = await getContactById(userId, contactId);
 
   if (!contact) {
     throw createHttpError(404, 'Contact not found');
