@@ -27,7 +27,6 @@ export const createContactSchema = Joi.object({
     .messages({
       'any.only': 'ContactType should be one of [work, home, personal]',
     }),
-  userId: Joi.string().required(),
 });
 
 export const updateContactSchema = Joi.object({
