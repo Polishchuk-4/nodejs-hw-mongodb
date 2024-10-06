@@ -10,7 +10,12 @@ import {
 
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
-import { validateBody, isValidId, authenticate } from '../middlewares/index.js';
+import {
+  validateBody,
+  isValidId,
+  authenticate,
+  addUserIdInBody,
+} from '../middlewares/index.js';
 
 import {
   createContactSchema,
@@ -27,6 +32,7 @@ router.get('/:contactId', isValidId, ctrlWrapper(getContactByIdController));
 
 router.post(
   '/',
+  addUserIdInBody,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
