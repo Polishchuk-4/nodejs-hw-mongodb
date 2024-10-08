@@ -9,6 +9,8 @@ import router from './routers/index.js';
 
 import { env } from './utils/env.js';
 
+import { UPLOAD_DIR } from './constants/index.js';
+
 const PORT = Number(env('PORT', 3000));
 
 export const setupServer = () => {
@@ -31,6 +33,8 @@ export const setupServer = () => {
       message: 'Hello Friend!',
     });
   });
+
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use(router);
 
