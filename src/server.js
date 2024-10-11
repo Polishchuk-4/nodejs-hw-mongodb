@@ -3,7 +3,11 @@ import pino from 'pino-http';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-import { notFoundHandler, errorHandler } from './middlewares/index.js';
+import {
+  notFoundHandler,
+  errorHandler,
+  swaggerDocs,
+} from './middlewares/index.js';
 
 import router from './routers/index.js';
 
@@ -35,6 +39,8 @@ export const setupServer = () => {
   });
 
   app.use('/uploads', express.static(UPLOAD_DIR));
+
+  app.use('/api-docs', swaggerDocs());
 
   app.use(router);
 
