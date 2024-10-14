@@ -15,7 +15,7 @@ parameters:
       example: '65e4decdd286b30065d54af9'
 requestBody:
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         properties:
@@ -40,9 +40,11 @@ requestBody:
             type: boolean
             example: false
           photo:
-            description: 'Link to contacts photo'
+            description: 'Сontacts photo'
             type: string
-            example: 'https://res.cloudinary.com/uqwgdu/image/upload/image.png'
+            format: binary
+            example: 'upload file'
+
 responses:
   '200':
     description: Successfully updated a contact

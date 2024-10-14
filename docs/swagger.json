@@ -254,9 +254,10 @@
                     "example": "65e4decdd286b30065d54af9"
                   },
                   "photo": {
-                    "description": "Link to contacts photo",
+                    "description": "Contacts photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "format": "binary",
+                    "example": "upload file"
                   }
                 }
               }
@@ -384,7 +385,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -418,9 +419,10 @@
                     "example": false
                   },
                   "photo": {
-                    "description": "Link to contacts photo",
+                    "description": "Сontacts photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+                    "format": "binary",
+                    "example": "upload file"
                   }
                 }
               }
@@ -585,7 +587,8 @@
           "photo": {
             "description": "Link to contacts photo",
             "type": "string",
-            "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
+            "format": "binary",
+            "example": "upload file"
           }
         }
       }

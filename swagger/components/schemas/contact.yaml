@@ -36,4 +36,5 @@ properties:
   photo:
     description: 'Link to contacts photo'
     type: string
-    example: https://res.cloudinary.com/uqwgdu/image/upload/image.png
+    format: binary
+    example: upload file
