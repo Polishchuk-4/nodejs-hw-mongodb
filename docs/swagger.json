@@ -81,30 +81,6 @@
           },
           {
             "in": "query",
-            "name": "name",
-            "schema": {
-              "type": "string",
-              "example": "Oleh Tkachuk"
-            }
-          },
-          {
-            "in": "query",
-            "name": "phoneNumber",
-            "schema": {
-              "type": "number",
-              "example": 380660044001
-            }
-          },
-          {
-            "in": "query",
-            "name": "email",
-            "schema": {
-              "type": "string",
-              "example": "oleh_tkachuk12345@gmail.com"
-            }
-          },
-          {
-            "in": "query",
             "name": "isFavorite",
             "schema": {
               "type": "boolean",
@@ -247,11 +223,6 @@
                     "description": "Best Contact",
                     "type": "boolean",
                     "example": false
-                  },
-                  "userId": {
-                    "description": "Contacts user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "photo": {
                     "description": "Contacts photo",
